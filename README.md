@@ -8,14 +8,14 @@ This application displays user data. Before accessing the collected data, it is 
 ## Launching application 
 
 * Clone repository https://github.com/ekovac2/Facebook-data-collector.git
-* Enter the React.js application and run commands:
+* Navigate to the project directory and run commands
    * npm install
    * npm start
    
 ## Authorization
 You can choose one of two methods to access the application and go through the authorization step.
 
-If you want to access the application with your Facebook profile: 
+If you want to access the application with your existing Facebook profile: 
 * Go to link https://developers.facebook.com/ and create an account there.
 * Contact developer: edinakovac97@hotmail.com for application access.
 

@@ -46,7 +46,7 @@ class LoginComponent extends React.Component {
       `GET`,
       {
         fields:
-        `id,first_name, last_name,birthday,education,friends,email,gender,hometown,feed, picture`,
+        `id,first_name, last_name,birthday,education,friends,email,gender,hometown,feed,picture`,
       },
       (response) => {
         this.setState(
@@ -65,7 +65,7 @@ class LoginComponent extends React.Component {
       if (response.status === `connected`) {
         window.FB.api(`/me`, this.testAPI);
       }
-    });
+    }, {scope: `user_birthday,user_friends,email,user_gender,user_hometown,user_photos,user_likes,user_posts`});
   }
 
   render() {

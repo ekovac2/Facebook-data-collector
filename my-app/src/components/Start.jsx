@@ -36,6 +36,7 @@ export default function Start() {
   const [fbData, setFbData] = useState({});
 
   const callback = (status, data) => {
+    console.log(data);
     setLoginStatus(status);
     setFbData(data);
   };

@@ -90,11 +90,11 @@ export default function DataComponent(props) {
         <Toolbar />
         <div className={classes.drawerContainer}>
           <Grid container spacing={0} justify={`center`}>
-            <Avatar alt={`Profile Picture`} src={props.data.picture.data.url} />
+            <Avatar alt={`Profile Picture`} src={props.data.picture ? props.data.picture.data.url : ` `} />
           </Grid>
           <Grid container spacing={0} justify={`center`}>
             <Typography className={classes.text} variant={`h5`} gutterBottom>
-              {props.data.first_name} {props.data.last_name}
+              {props.data.first_name ? props.data.first_name : ` `} {props.data.last_name ? props.data.last_name : ` `}
             </Typography>
           </Grid>
           <React.Fragment>
@@ -103,7 +103,7 @@ export default function DataComponent(props) {
                 <CakeIcon />
               </ListItemAvatar>
               <ListItemText
-                primary={props.data.birthday}
+                primary={props.data.birthday ? props.data.birthday : `No birthday available`}
                 secondary={`Date of birth`}
               />
             </ListItem>
@@ -112,14 +112,14 @@ export default function DataComponent(props) {
               <ListItemAvatar>
                 <WcIcon />
               </ListItemAvatar>
-              <ListItemText primary={props.data.gender} secondary={`Gender`} />
+              <ListItemText primary={props.data.gender ? props.data.gender : `No gender available`} secondary={`Gender`} />
             </ListItem>
             <Divider />
             <ListItem button>
               <ListItemAvatar>
                 <MailOutlineIcon />
               </ListItemAvatar>
-              <ListItemText primary={props.data.email} secondary={`Email`} />
+              <ListItemText primary={props.data.email ? props.data.email : `No email available`} secondary={`Email`} />
             </ListItem>
             <Divider />
             <ListItem button>
@@ -127,7 +127,7 @@ export default function DataComponent(props) {
                 <HomeIcon />
               </ListItemAvatar>
               <ListItemText
-                primary={props.data.hometown.name}
+                primary={props.data.hometown ? props.data.hometown.name : `No hometown available`}
                 secondary={`Hometown`}
               />
             </ListItem>
@@ -137,7 +137,7 @@ export default function DataComponent(props) {
                 <PeopleIcon />
               </ListItemAvatar>
               <ListItemText
-                primary={props.data.friends.summary.total_count}
+                primary={props.data.friends ? props.data.friends.summary.total_count : `No friends count available`}
                 secondary={`Number of friends`}
               />
             </ListItem>
@@ -151,18 +151,18 @@ export default function DataComponent(props) {
         </Typography>
         <Divider />
         <List className={classes.list}>
-          {props.data.feed.data.map(
+          {props.data.feed ? props.data.feed.data.map(
             ({ id, message, created_time, story }, i) => (
               <React.Fragment>
                 <ListItem button>
                   <ListItemAvatar>
                     <Avatar
                       alt={`Profile Picture`}
-                      src={props.data.picture.data.url}
+                      src={props.data.picture ? props.data.picture.data.url : ` `}
                     />
                   </ListItemAvatar>
                   <ListItemText
-                    primary={`${props.data.first_name} ${props.data.last_name}`}
+                    primary={`${props.data.first_name ? props.data.first_name: ` `} ${props.data.last_name ? props.data.last_name : ` `}`}
                     secondary={created_time}
                   />
                 </ListItem>
@@ -187,12 +187,12 @@ export default function DataComponent(props) {
                 <Divider />
               </React.Fragment>
             )
-          )}
+          ) : `No feed posts available`}
         </List>
         <Button
           variant={`outlined`}
           color={`primary`}
-          onClick={() => saveToFile(props.data.feed.data)}
+          onClick={() => saveToFile(props.data.feed ? props.data.feed.data : ` `)}
         >
           Save changes
         </Button>
